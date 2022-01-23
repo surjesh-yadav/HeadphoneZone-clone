@@ -1,0 +1,776 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Headphone-Zone</title>
+    <style>
+            #marq{
+            background-color: #b7babd;
+            display: flex;
+            max-width: 100%;
+            height: 50px;
+            justify-content: right;
+        }
+        #btt{
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+        .fas{
+            margin-right: 10px;
+        }
+        #help{
+            background-color: #dfe4e9;
+            color: rgb(17, 16, 16);
+            border: transparent;
+            cursor: pointer;
+            margin:0px 30px;
+            margin-right: 40px;
+        }
+        .far{
+            margin-right: 10px;
+        }
+        #menu{
+            height: 64px;
+            display: flex;
+            font-family: sans-serif;
+            align-items: center;
+        }
+        #menubar{
+            font-size: 14px;;
+            display: flex;
+            align-content: center;
+            width: 30%;
+            justify-content: space-around;
+            align-items: center;
+            margin-right: 10%;
+            margin-left: 200px;
+
+        }
+        #menubar>div{
+            padding:20px 10px;
+            margin: 5px;
+        }
+        #menubar>div:hover{
+            cursor: pointer;
+            color: red;
+        }
+       
+        #menubar>div:nth-child(1){
+            padding: 30px;
+            margin: 20px;
+        }
+        #headphoneLogo{
+            width: 200px;
+            height: 100px;
+            margin: 100px 40px;
+        }
+        #newbar{
+            display: flex;
+            align-items: center;
+        }
+        #newbar>select{
+            border: transparent;
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+        #newbar>select>option{
+            padding:20px 0px;
+        }
+        .allign{
+            width: 200px;
+            height: 45px;
+            background-color: #1154da;
+            /* border: black solid 1px; */
+            border-radius: 40px;
+            margin-left: 100px;
+        }
+        .align{
+            display: flex;
+            width: 35px;
+            height: 36px;
+
+           
+        }
+        #search{
+            color: rgba(95, 9, 9, 0.507);
+            padding: 13px 0px 13px 10px;
+            margin-left: 100px;
+        }
+        #sear{
+            height: 45px;
+            width: 200px;
+            outline: none;
+            background-color: #e2e6ee;
+            border: 1px solid black;
+            border-radius: 40px;
+            font-size: 20px;
+            padding-left: 30px;
+
+        }
+        #accountBar{
+            display: flex;
+            width: 20%;
+            justify-content: space-around;
+            margin-left: 20px;
+        }
+        #accountBar>div{
+            display: flex;
+
+        }
+        #accountBar>div:hover{
+            cursor: pointer;
+        }
+        #button10{
+            background-color: transparent;
+            border: transparent;
+            font-size:16px;
+        }
+        #btnn{
+            margin: 10px;
+            border: 0px;
+        }
+        body{
+            font-family:sans-serif;
+        }
+    </style>
+</head>
+<body>
+       <div id="marq">
+        
+        <div id="btt" onclick="window.location.href='hzlogin.html'">Loggin</div>
+        <div id="btt" onclick="window.location.href='hzsignup1.html'">Signup</div>
+        
+        
+    </div>
+    <div id="menu">
+        <div><img id="headphoneLogo" src="data:image/png;base64,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" alt=""></div>
+        
+        <div id="menubar">
+            <div id="newbar1" onclick="newBar1()">Categories</div>
+            <div id="newbar2"  onclick="newBar2()">Brands</div>
+            <div id="newbar3" onclick="newBar3()">Price</div>
+            <div id="newbar4" onclick="newBar4()">Audiophile</div>
+            <div id="newbar5"  onclick="newBar5()">Deals</div>
+            <div id="newbar6" onclick="newBar6()">Headphone Finder</div>
+            <div id="newbar7" onclick="newBar7()">Experiences</div>
+            <div id="newbar8" onclick="newBar8()">Info</div>
+            <div id="newbar9" onclick="newBar9()">Help Center</div>
+
+        </div>
+        <div class="allign">
+    
+            <div ><input id="sear"type="text" placeholder="Search"></div>
+
+        </div></div></div>
+        </div>
+    </div>
+    <div id="newbar"></div>
+
+</body>
+</html>
+<script>
+
+    var newBar = document.querySelector("#newbar");
+
+    function newBar1(){
+
+        document.getElementById("newbar").innerHTML=""
+        document.getElementById("newbar2").style.color="black";
+        document.getElementById("newbar2").style.borderBottom="transparent"
+        document.getElementById("newbar3").style.color="black";
+        document.getElementById("newbar3").style.borderBottom="transparent"
+        document.getElementById("newbar4").style.color="black";
+        document.getElementById("newbar4").style.borderBottom="transparent"
+        document.getElementById("newbar5").style.color="black";
+        document.getElementById("newbar5").style.borderBottom="transparent"
+        document.getElementById("newbar6").style.color="black";
+        document.getElementById("newbar6").style.borderBottom="transparent"
+
+        var a = 0;
+       if(a==0){
+        document.getElementById("newbar1").style.color="#FD7685";
+        document.getElementById("newbar1").style.borderBottom="2px solid #FD7685"
+
+
+        var btn1 = document.createElement("select");
+        var opt1 = document.createElement("option");
+        opt1.textContent="Headphones";
+        var opti2=document.createElement("option");
+        opti2.textContent="True Wireless Earbuds";
+        var opti3=document.createElement("option");
+        opti3.textContent="Wireless Headphones";
+        var opti4=document.createElement("option");
+        opti4.textContent="Portabe Bundles";
+        var opti5=document.createElement("option");
+        opti5.textContent="Desktop Bundles";
+        var opti6=document.createElement("option");
+        opti6.textContent="In - Ears For Begginers";
+        var opti7=document.createElement("option");
+        opti7.textContent="Gaming";
+        var opti8=document.createElement("option");
+        opti8.textContent="Work From Home";
+        var opti9=document.createElement("option");
+        opti9.textContent="Speakers";
+
+
+        var btn2 = document.createElement("select");
+        var opti1=document.createElement("option");
+        opti1.textContent="Earphones";
+        
+
+
+
+        newBar.append(btn1);
+      
+        btn1.append(opti1, opti2, opti3, opti4, opti5, opti6, opti7, opti8, opti9);
+      
+       }
+    }
+
+    function newBar2(){
+        document.getElementById("newbar").innerHTML=""
+        document.getElementById("newbar1").style.color="black";
+        document.getElementById("newbar1").style.borderBottom="transparent"
+        document.getElementById("newbar3").style.color="black";
+        document.getElementById("newbar3").style.borderBottom="transparent"
+        document.getElementById("newbar4").style.color="black";
+        document.getElementById("newbar4").style.borderBottom="transparent"
+        document.getElementById("newbar5").style.color="black";
+        document.getElementById("newbar5").style.borderBottom="transparent"
+        document.getElementById("newbar6").style.color="black";
+        document.getElementById("newbar6").style.borderBottom="transparent"
+        a = 1;
+        if (a=1){
+        document.getElementById("newbar2").style.color="#FD7685";
+        document.getElementById("newbar2").style.borderBottom="2px solid #FD7685"
+
+        var btn1 = document.createElement("select");
+        var opt1 = document.createElement("option");
+        opt1.textContent="A-B";
+        var opti2=document.createElement("option");
+        opti2.textContent="C-D";
+        var opti3=document.createElement("option");
+        opti3.textContent="E-H";
+        var opti4=document.createElement("option");
+        opti4.textContent="I-L";
+        var opti5=document.createElement("option");
+        opti5.textContent="M-R";
+        var opti6=document.createElement("option");
+        opti6.textContent="S-T";
+        var opti7=document.createElement("option");
+        opti7.textContent="T-Z";
+        newBar.append(btn1);
+        btn1.append(opt1, opti2, opti3, opti4, opti5, opti6, opti7);
+        a=2;
+        }
+        
+    }
+    
+    function newBar3(){
+
+        document.getElementById("newbar").innerHTML=""
+        document.getElementById("newbar1").style.color="black";
+        document.getElementById("newbar1").style.borderBottom="transparent"
+        document.getElementById("newbar2").style.color="black";
+        document.getElementById("newbar2").style.borderBottom="transparent"
+        document.getElementById("newbar4").style.color="black";
+        document.getElementById("newbar4").style.borderBottom="transparent"
+        document.getElementById("newbar5").style.color="black";
+        document.getElementById("newbar5").style.borderBottom="transparent"
+        document.getElementById("newbar6").style.color="black";
+        document.getElementById("newbar6").style.borderBottom="transparent"
+
+        a=2;
+        document.getElementById("newbar3").style.color="#FD7685";
+        document.getElementById("newbar3").style.borderBottom="2px solid #FD7685"
+        
+        var btn1 = document.createElement("select");
+
+        var opti1=document.createElement("option");
+        opti1.textContent="Best Under 1,000";
+        var opti2=document.createElement("option");
+        opti2.textContent="Best Under 2,000";
+        var opti3=document.createElement("option");
+        opti3.textContent="Best Under 3,000";
+        var opti4=document.createElement("option");
+        opti4.textContent="Best Under 4,000";
+        var opti5=document.createElement("option");
+        opti5.textContent="Best Under 5,000";
+        var opti6=document.createElement("option");
+        opti6.textContent="Best Under 6,000";
+        var opti7=document.createElement("option");
+        opti7.textContent="Best Under 7,000";
+        var opti8=document.createElement("option");
+        opti8.textContent="Best Under 8,000";
+        newBar.append(btn1);
+        btn1.append(opti1,opti1, opti2, opti3, opti4, opti5, opti6, opti7, opti8);
+
+
+
+        a=3;
+    }
+    
+    function newBar4(){
+
+        document.getElementById("newbar").innerHTML=""
+        document.getElementById("newbar1").style.color="black";
+        document.getElementById("newbar1").style.borderBottom="transparent"
+        document.getElementById("newbar2").style.color="black";
+        document.getElementById("newbar2").style.borderBottom="transparent"
+        document.getElementById("newbar3").style.color="black";
+        document.getElementById("newbar3").style.borderBottom="transparent"
+        document.getElementById("newbar5").style.color="black";
+        document.getElementById("newbar5").style.borderBottom="transparent"
+        document.getElementById("newbar6").style.color="black";
+        document.getElementById("newbar6").style.borderBottom="transparent"
+
+        a=3;
+        document.getElementById("newbar4").style.color="#FD7685";
+        document.getElementById("newbar4").style.borderBottom="2px solid #FD7685"
+
+        var btn1 = document.createElement("select");
+
+        var opti1=document.createElement("option");
+        opti1.textContent="Headphones";
+        var opti2=document.createElement("option");
+        opti2.textContent="IEMS";
+        var opti3=document.createElement("option");
+        opti3.textContent="APMPS & DACS";
+        var opti4=document.createElement("option");
+        opti4.textContent="SPEAKERS";
+        var opti5=document.createElement("option");
+        opti5.textContent="CABLES";
+        var opti6=document.createElement("option");
+        opti6.textContent="ACCESSORIES";
+        var opti7=document.createElement("option");
+        opti7.textContent="EARBUDS";
+        var opti8=document.createElement("option");
+        opti8.textContent="EARPHONES";
+        var opti9=document.createElement("option");
+        opti9.textContent="NECKBAND";
+
+        newBar.append(btn1);
+        btn1.append(opti1, opti2,opti3,opti4,opti5,opti6,opti7,opti8);
+
+
+        a=4;
+    }
+    
+    function newBar5(){
+
+        document.getElementById("newbar").innerHTML=""
+        document.getElementById("newbar1").style.color="black";
+        document.getElementById("newbar1").style.borderBottom="transparent"
+        document.getElementById("newbar2").style.color="black";
+        document.getElementById("newbar2").style.borderBottom="transparent"
+        document.getElementById("newbar3").style.color="black";
+        document.getElementById("newbar3").style.borderBottom="transparent"
+        document.getElementById("newbar4").style.color="black";
+        document.getElementById("newbar4").style.borderBottom="transparent"
+        document.getElementById("newbar6").style.color="black";
+        document.getElementById("newbar6").style.borderBottom="transparent"
+
+        a=4;
+        document.getElementById("newbar5").style.color="#FD7685";
+        document.getElementById("newbar5").style.borderBottom="2px solid #FD7685"
+
+        var btn1 = document.createElement("select");
+
+        var opti1=document.createElement("option");
+        opti1.textContent="Wireless Earphones";
+        var opti2=document.createElement("option");
+        opti2.textContent="Wireless Headphones";
+        var opti3=document.createElement("option");
+        opti3.textContent="True wireless earbuds";
+        var opti4=document.createElement("option");
+        opti4.textContent="wired earphones";
+        var opti5=document.createElement("option");
+        opti5.textContent="wire headphones";
+        var opti6=document.createElement("option");
+        opti6.textContent="Hi res players";
+        var opti7=document.createElement("option");
+        opti7.textContent="EARBUDS";
+        var opti8=document.createElement("option");
+        opti8.textContent="EARPHONES";
+       
+
+        newBar.append(btn1);
+        btn1.append(opti1, opti2,opti3,opti4,opti5,opti6,opti7,opti8);
+
+    a=5;
+    }
+
+
+
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+
+
+    <style>
+
+        #ear{
+            height: 404px;
+            width: 95%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            
+            grid-gap: 10px;
+        }
+        #img{
+            height: 150px;
+            width: 150px;
+            text-align: center;
+        }
+        #earphone{
+        
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: space-between;
+
+        }
+        #goat{
+            margin-left: 100px;
+            margin-top: 100px;
+        }
+        #btn{
+            border: green solid 1px;
+            height: 35px;
+            width: 100px;
+            border-radius: 50px;
+        }
+        #start>h1{
+           
+            text-align: center;
+        }
+        #start>p{
+            text-align: center;
+        }
+        #startt{
+            margin-top: 100px;
+            
+            
+        }
+        #startt>h1{
+           
+            text-align: center;
+        }
+        #startt>p{
+            text-align: center;
+        }
+        #starttt{
+            margin-top: 100px;
+            font-size: 25px;
+            
+            
+        }
+        #starttt>h1{
+           
+            text-align: center;
+        }
+        #starttt>p{
+            text-align: center;
+        }
+        .banner{
+            text-align: center;
+            background-image: url(https://www.youtube.com/watch?v=2_O2i6IsTkI);
+        }
+
+        #startttt{
+            margin-top: 100px;
+           
+            
+            
+        }
+        #startttt>h1{
+           
+            text-align: center;
+        }
+        #startttt>p{
+            text-align: center;
+        }
+
+        #button{
+            display: flex;
+            padding: 20px;
+            margin: 100px;
+
+        }
+        button{
+            margin: 30px;
+            height: 40px;
+            width: 170px;
+            border-radius: 50px;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+        }
+        #abt{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 350px);
+            grid-gap: 10px;
+            
+
+        }
+        .img{
+        
+           
+            text-align: center;
+        }
+        #ims{
+            height: 250px;
+            width: 250px;
+            margin-left: 60px;
+        
+        }
+        #view{
+            font-weight: bold;
+            height: 50px;
+            width: 150px;
+            color: rgb(0, 0, 170);
+            border: 3px blue solid;
+            margin-left: 700px;
+        }
+        #neta{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(1, 400px);
+            
+            grid-gap: 10px;
+            justify-content: space-around;
+            width: 80%;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+        .net{
+            background-color: darkgray;
+        }
+
+        .begin{
+            margin: auto;
+            background-color: rgb(40, 4, 73);
+            color: white;
+        }
+
+        #h{
+            text-align: center;
+        }
+        
+        
+
+    </style>
+</head>
+<body>
+
+    <div id="earphone">
+        <div id="goat">
+          <h4>#YOURSOUNDNOTHINGELSE</h4>
+
+          <h1>The G. O. A .T of Noise
+              <br> cancelling Earbuds</h1>
+
+              <p>THE ALL - NEW SONY WF-1000XM4 IS HERE</p>
+              <button id="btn">BUY NOW</button>
+        </div>
+        <div class="earbuds"><img src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Sony-WF-1000XM4-Black-07_800x.jpg?v=1642060231" alt=""></div>
+        
+       
+    </div>
+    
+    <div id="start">
+        <h1>Start Your Audiophile Journey Here</h1>
+        <p>REDISCOVER MUSIC WITH OUR CURATED COLLECTIONS OF THE BEST SOUNDING HEADPHONES.</p>
+    </div>
+    <div id="ear">
+        <div class="b1">
+
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-CCA-CA4-Blue-Mic-01_2000x.jpg?v=1638778882" alt="">
+            <p>IN_EARS FOR BEGGINNERS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-audio-technica-m30x-1160-1160_2000x.jpg?v=1590560557" alt="">
+            <p>HEADPHONES FOR BEGGINNERS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Sony-WF-1000XM4-Black-07_2000x.jpg?v=1642060231" alt="">
+            <p>EARBUDS FOR BEGGINNERS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/sony-wh-ch510-black-headphone-zone-12771979329599_480x.jpg?v=1580399297" alt="">
+            <p>WIRELESS HEADPHONES</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Meze-12-Classics_EarMen-Eagle-1_480x.jpg?v=1625471961" alt="">
+            <p>PORTABLE BUNDLES</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/1_57518252-d76e-4e30-9230-8539f1f8b677_480x.jpg?v=1623492208" alt="">
+            <p>DESKTOP BUNDLES</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-HiFIMAN-XS-1160-1160-05_480x.jpg?v=1641460416" alt="">
+            <p>FLAGSHIP HEADPHONES</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Lotoo-PAW-Pico-02_480x.jpg?v=1634543311" alt="">
+            <p>HI-RES AUDIO PLAYERS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-iBasso-DC05-Black-01_480x.jpg?v=1636613479" alt="">
+            <p>PORTABLE AMPS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/EarMen-Donald-DAC-New-1_480x.jpg?v=1595424126" alt="">
+            <p>DESKTOP AMPS & DACS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Edifier-K550-Black-01_480x.jpg?v=1602495156" alt="">
+            <p>WORK FROM HOME</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Razer-BlackShark-V2-Pro-Six-Siege-Special-Edition--1160-1160_480x.jpg?v=1632306709" alt="">
+            <p>GAMING</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Audio-technica-m50x-1160-1160-Black_61b891f0-d385-464a-8dfb-a40bc89d0516_480x.jpg?v=1633078733" alt="">
+            <p>STUDIO & PROFESSIONAL</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-beyerdynamic-phonum-1160-1160_480x.jpg?v=1595419841" alt="">
+            <p>SPEAKERS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Replacemnet-Cable-for-M50X-01_480x.jpg?v=1610192345" alt="">
+            <p>CABLES</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/comply-audio-pro-1-pair-headphone-zone-26819110727_480x.jpg?v=1607957124" alt="">
+            <p>EARPADS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-FiiO-FH7-2_480x.jpg?v=1624598648" alt="">
+            <p>FLAGSHIP IEMS</p>
+        </div>
+        <div class="b1">
+            <img id="img" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-KZ-EVA-Case-Black-01_480x.jpg?v=1625734755" alt="">
+            <p>CASES</p>
+        </div>
+    </div>
+
+    <div id="startt">
+        <h1>Like You, We Love Music...</h1>
+        <p>AND WE BELIEVE A HEADPHONE IS MORE THAN JUST AN INSTRUMENT FOR SOUND.</p>
+    </div>
+    <hr>
+
+    <div id="starttt">
+
+        <p>Its the key to a mind-blowing moment of emotion, bringing you closer to your music, and yourself.
+        </p>
+
+            <p>Weve curated the worlds finest headphones & earphones to help you discover the riffs, percussions, baselines and solos that were always there but never heard.</p> 
+    </div>
+    
+    <div class="banner">
+
+        <embed style="width: 100%; height: 600px;" src="https://www.youtube.com/embed/rP33fq81lgo"  type="">
+
+        
+        
+</div>
+
+<div id="startttt">
+    <h1>Chart Topping Headphones</h1>
+    <p>CUT THROUGH THE CHASE AND BROWSE THROUGH OUR HANDPICKED COLLECTION OF PRODUCTS</p>
+</div>
+
+<div id="button">
+
+    <button>PORTABLE SETUPS</button>
+    <button>DESKTOP SETUPS</button>
+    <button>TRENDING IN TOWN</button>
+    <button>NEW LAUNCHES</button>
+    <button>WFH</button>
+    <button>BEST OF UNBOXED</button>
+
+</div>
+
+<div id="abt">
+    <div class="img">
+<img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Silver_82b30c42-ac6a-4672-ab99-38387facaed5_480x.jpg?v=1615788714" alt="">
+<p>BLON - BL - 03 =SHANLING - Q1</p>
+    </div>
+    
+    <div class="img">
+        <img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-FiiO-FH1S-EarMen-Eagle-9_480x.jpg?v=1626268837" alt="">
+        <p>FIIO - FH1S + EARMEN - EAGLE</p>
+            </div>
+    
+    <div class="img">
+<img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Meze-12-Classics_EarMen-Eagle-1_480x.jpg?v=1625471961" alt="">
+<p>MEZE - 12 CLASSICS V2 + EARMEN - EAGLE</p>
+    </div>
+    <div class="img">
+<img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Shure-Aonic-215-and-Shanling-Q1_d6a46a5a-39fe-42b7-9898-ea63a7e2dd2d_480x.jpg?v=1629277654" alt="">
+<p>SHURE - AONIC 215 + SHANLING</p>
+    </div>
+    <div class="img">
+<img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-Meze-99-Classics_EarMen-Eagle-1_480x.jpg?v=1633076078" alt="">
+<p>MEZE - 99 CLASSICS + EARMEN</p>
+    </div>
+    <div class="img">
+<img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/IMG_1663_480x.jpg?v=1633076136" alt="">
+<p>MEZE - 99 CLASSICS + EARMEN</p>
+    </div>
+    <div class="img">
+<img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/Headphone-Zone-99Neo-Sparrow-1160-1160_480x.jpg?v=1617631663" alt="">
+<p>MEZE = 99 NEO + EARMEN</p>
+    </div>
+    <div class="img">
+      <img id="ims" src="https://cdn.shopify.com/s/files/1/0153/8863/products/1_4f2d4e4b-f8db-46d5-a752-d958fe01505d_480x.jpg?v=1614937759" alt="">
+      <p>BEYERDYNAMIC - DT 770 PRO</p>  
+    </div>
+</div>
+
+<button id="view">VIEW MORE</button>
+
+<div id="neta">
+    <div class="net"> 
+        <img class="nt" src="https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Headphone-Gurus.jpg?v=1590134932" alt="">
+    </div>
+    <div class="net"> 
+        <h1>CONFUSED?</h1>
+        <h1> USE OUR HEADPHONE FINDER</h1>
+        <h3>Meet our Headphone Gurus.</h3>
+        <p>hey obsess over every headphone so you get the perfect one. They have spent years reviewing & listening to countless headphones everyday. Our Headphone Gurus are the go-to guys for everything audio.</p>
+        <br>
+        <p>Our Headphone Finder puts together their top recommendations. In 5 easy steps, find the perfect headphones for you.</p>
+
+        <button class="begin">BEGIN HERE</button>
+    </div>
+
+    <div id="h">
+        <h1>Home To The World's Finest Brands</h1>
+    </div>
+
+</div>
+    
+    </body>
+  
+</html>
+
+
+
