@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #Container{
+            width: 15%;
+            height: 50px;
+            border: 1px solid white;
+        }
+        .img{
+            width: 100%;
+            height: 100%;
+        }
+        #container{
+       margin: 50px;
+       box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        }
+        #otp{
+            width: 23%;
+            height: 40px;
+            /* border-radius: 1px; */
+            margin-bottom: 15px;
+        }
+        #submit{
+            width: 10%;
+            height: 40px;
+            background-color: blue;
+            color: white;
+            font-size: 20px;
+            border: 0px;
+            border-radius: 5px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="Container">
+        <img class="img" src="https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Secondary-Logo.png?110679">
+
+    </div>
+    <div id="container">
+    <form>
+        <input id="otp" type="number" placeholder="Enter your OTP"><br>
+    <input id="submit" type="submit" value="pay">
+    </form>
+</div>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",formSubmit)
+    
+    var userStackk = JSON.parse(localStorage.getItem("userDataBase"))
+    function formSubmit(event) {
+        event.preventDefault();
+        
+        var otp = document.querySelector("#otp").value;
+
+
+        var userData = {
+          otp:otp,
+
+        }
+        userStackk.push(userData);
+        console.log(userData)
+
+
+localStorage.setItem("userDataBase",JSON.stringify(userStackk));
+alert( "payment Successfull")
+// window.location.href = "home.html"
+}
+</script>
