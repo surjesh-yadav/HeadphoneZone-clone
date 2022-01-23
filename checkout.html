@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+         margin-left: 90px;
+         /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+         height: 800px;
+            width: 80%;
+        }
+        #CI{
+            width: 44%;
+            height: 40px;
+            /* border-radius: 5px; */
+          
+        }
+        #country{
+            width: 44%;
+            height: 40px;
+            margin-bottom: 15px;
+            /* border-radius: 5px; */
+
+        }
+        #firstName{
+            width: 21%;
+            height: 40px;
+            margin-right: 13px;
+            /* border-radius: 5px; */
+
+        }
+        #lastName{
+            width: 21%;
+            height: 40px;
+            margin-bottom: 15px;
+            /* border-radius: 5px; */
+
+
+        }
+        #adderess{
+            width: 44%;
+            height: 40px;
+            margin-bottom: 15px;
+            /* border-radius: 5px; */
+
+
+        }
+        #city{
+            width: 13%;
+            height: 40px;
+           margin-right: 15px;
+           /* border-radius: 5px; */
+
+        }
+        #state{
+            width: 13%;
+            height: 40px;
+            margin-right: 15px;
+            /* border-radius: 5px; */
+
+
+        }
+        #pincode{
+            width: 13%;
+            height: 40px;
+            margin-bottom: 15px;
+            /* border-radius: 5px; */
+
+
+        }
+        #mobile{
+            width: 44%;
+            height: 40px;
+           margin-bottom: 15px;
+           /* border-radius: 5px; */
+        
+
+        }
+        #submit{
+            width: 18%;
+            height: 50px;
+            margin-left: 27.5%;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border: 0px;
+        }
+        .f{
+            font-size: 20px;
+            font-weight: 5px;
+        }
+        .im{
+            width: 15%;
+            height: 50px;
+            border: 1px solid white;
+        }
+        .img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+  
+    <div class="container">
+       <div class="im">
+        <img class="img" src="https://cdn.shopify.com/s/files/1/0153/8863/files/Headphone-Zone-Secondary-Logo.png?110679">
+    
+       </div>
+         <form >
+        <P class="f">Contract Information</P>
+    <input id="CI" type="text" placeholder="Email"><br>
+    <p class="f">Shipping Address</p>
+    <input id="country" type="text" placeholder="country/region"><br>
+    <input id="firstName" type="text" placeholder="First name">
+    <input id="lastName" type="text" placeholder="Last name"><br>
+    <input id="adderess" type="text" placeholder="Adderess"><br>
+    <input id="city" type="text" placeholder="City">
+    <input id="state" type="text" placeholder="State">
+    <input id="pincode" type="number" placeholder="Pincode"><br>
+    <input id="mobile" type="number" placeholder="Phone number for order update"><br>
+    <input id="submit" type="submit" value="Continue to payment methode">
+    </form>
+</div>
+</body>
+</html>
+<script>
+     document.querySelector("form").addEventListener("submit",formSubmit)
+    
+    var userStackk = JSON.parse(localStorage.getItem("userDataBase"))
+    function formSubmit(event) {
+        event.preventDefault();
+
+        var CI = document.querySelector("#CI").value;
+        var country = document.querySelector("#country").value;
+        var firstName = document.querySelector("#firstName").value;
+        var lastName = document.querySelector("#lastName").value;
+        var adderess = document.querySelector("#adderess").value;
+        var city = document.querySelector("#city").value;
+
+        var state = document.querySelector("#state").value;
+        var pincode = document.querySelector("#pincode").value;
+        var mobile = document.querySelector("#mobile").value;
+        
+
+        // console.log(email,pass,username,mbl)
+
+        
+
+       
+        var userData = {
+            CI:CI,
+            country:country,
+            firstName:firstName,
+            lastName:lastName,
+            adderess:adderess,
+            city:city,
+            state:state,
+            pincode:pincode,
+            mobile:mobile,
+
+        }
+         console.log(userData)
+
+
+        userStackk.push(userData);
+
+        localStorage.setItem("userDataBase",JSON.stringify(userStackk));
+        alert( "Choose payment methode")
+        window.location.href = "choose.html"
+    }
+</script>
