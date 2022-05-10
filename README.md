@@ -6,7 +6,7 @@
 
 After getting this project by Masai in Unit 2 construct week. 
 We all went through the actual website to understand the entire flow and noted down all the important features which were to be implemented. 
-We all decided that Suman will lead the team. Suman has created a roadmap for the project (Structure of the project, 
+We all decided that Surjesh will lead the team. Surjesh has created a roadmap for the project (Structure of the project, 
 division of work among members with specific timelines). We used to meet twice a day (Scrum and Standup). 
 Our discipline, dedication, coordination, and cooperation helps us to complete this project on time.
 
